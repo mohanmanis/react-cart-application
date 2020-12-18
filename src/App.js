@@ -22,54 +22,54 @@ class App extends Component {
             products
         }
     }
-    addProductToCart = (id) => {
-        this.updateQuantity(id, 1)
-    }
+    // addProductToCart = (id) => {
+    //     this.updateQuantity(id, 1)
+    // }
     
-    removeProductFromCart = (id) => {
-        this.updateQuantity(id, -1)
-    }
+    // removeProductFromCart = (id) => {
+    //     this.updateQuantity(id, -1)
+    // }
 
-    changeTheQuantity = (id, newValue) => {
-        if (Number.isInteger(newValue) && newValue > -1) {
-            const oldValue = this.state.products.forEach(item => item.id === id).cartQuantity;
-            this.updateQuantity(id, newValue - oldValue)
-        }
-    }
+    // changeTheQuantity = (id, newValue) => {
+    //     if (Number.isInteger(newValue) && newValue > -1) {
+    //         const oldValue = this.state.products.forEach(item => item.id === id).cartQuantity;
+    //         this.updateQuantity(id, newValue - oldValue)
+    //     }
+    // }
 
-    updateQuantity = (id, amount) => {
-        this.setState(function ({ cart, products }) {
-            products.forEach((product, index) => {
-                if (product.id === id) {
-                    products[index].cartQuantity += amount;
-                    let found = false;
-                    cart.items.forEach((item, itemIndex) => {
-                        if (item.id === id) {
-                            found = true;
-                            if (product.cartQuantity === 0) {
-                                cart.items.splice(itemIndex,1)
-                            } else {
-                                cart.items[itemIndex].quantity = product.cartQuantity
-                            }
-                        }
-                    })
-                    if (!found) {
-                        cart.items.push({ id: product.id, item: product.name, quantity: product.cartQuantity })
-                    }
-                }
-            })
-            return {
-                cart,
-                products
-            }
-        })
-    }
+    // updateQuantity = (id, amount) => {
+    //     this.setState(function ({ cart, products }) {
+    //         products.forEach((product, index) => {
+    //             if (product.id === id) {
+    //                 products[index].cartQuantity += amount;
+    //                 let found = false;
+    //                 cart.items.forEach((item, itemIndex) => {
+    //                     if (item.id === id) {
+    //                         found = true;
+    //                         if (product.cartQuantity === 0) {
+    //                             cart.items.splice(itemIndex,1)
+    //                         } else {
+    //                             cart.items[itemIndex].quantity = product.cartQuantity
+    //                         }
+    //                     }
+    //                 })
+    //                 if (!found) {
+    //                     cart.items.push({ id: product.id, item: product.name, quantity: product.cartQuantity })
+    //                 }
+    //             }
+    //         })
+    //         return {
+    //             cart,
+    //             products
+    //         }
+    //     })
+    // }
     render() {
         return (
             <div>
                 <h8k-navbar header={title}></h8k-navbar>
                 <div className="layout-row shop-component">
-                    <ProductList products={this.state.products} addProductToCart={this.addProductToCart} removeProductFromCart={this.removeProductFromCart} changeTheQuantity={ this.changeTheQuantity}/>
+                    <ProductList products={this.state.products}/>
                     <Cart cart={this.state.cart}/>
                 </div>
             </div>

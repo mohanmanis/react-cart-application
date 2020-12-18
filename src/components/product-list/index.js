@@ -23,27 +23,25 @@ export default class ProductList extends Component {
                                 </div>
                                 <div className="card-actions justify-content-center pa-4">
 
-                                    {product.cartQuantity === 0 && <button className="x-small outlined" data-testid="btn-item-add" onClick={this.props.addProductToCart.bind(this, product.id)}>
+                                    <button className="x-small outlined" data-testid="btn-item-add">
                                         Add To Cart
-                                    </button>}
+                                    </button>
 
-                                    {product.cartQuantity > 0 && <div className="layout-row justify-content-between align-items-center">
+                                  <div className="layout-row justify-content-between align-items-center">
                                         <button className="x-small icon-only outlined"
-                                            data-testid="btn-quantity-subtract" onClick={this.props.removeProductFromCart.bind(this, product.id)}>
+                                            data-testid="btn-quantity-subtract" >
                                             <i className="material-icons">remove</i>
                                         </button>
 
                                         <input type="number"
-                                            disabled={product.cartQuantity === 0}
-                                            value={product.cartQuantity}
-                                            onChange={(ev) => this.props.changeTheQuantity(product.id, ev.target.value)}
+                                            disabled
                                             className="cart-quantity" data-testid="cart-quantity" />
 
                                         <button className="x-small icon-only outlined"
-                                            data-testid="btn-quantity-add" onClick={this.props.addProductToCart.bind(this, product.id)}>
+                                            data-testid="btn-quantity-add">
                                             <i className="material-icons">add</i>
                                         </button>
-                                    </div>}
+                                    </div>
 
                                 </div>
                             </div>
